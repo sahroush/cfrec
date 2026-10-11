@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CFrec — Medalist Problem Recommender</title>
+  <link rel="stylesheet" href="/src/style.css" />
+</head>
+<body>
+  <header>
+    <h1>CFrec</h1>
+    <p class="tagline">Codeforces problems ranked by Iran OI gold medalists</p>
+  </header>
+
+  <form id="controls">
+    <label>Handle <input id="handle" name="handle" placeholder="e.g. tourist" autocomplete="off" /></label>
+    <label>Min rating <input id="min" name="min" type="number" value="800" min="0" max="4000" step="100" /></label>
+    <label>Max rating <input id="max" name="max" type="number" value="3500" min="0" max="4000" step="100" /></label>
+    <label class="checkbox"><input id="hide-solved" name="hide-solved" type="checkbox" checked /> Hide solved</label>
+    <label class="checkbox"><input id="include-unrated" name="include-unrated" type="checkbox" /> Include unrated</label>
+    <label>Tags
+      <input id="tags" name="tags" list="tag-list" placeholder="dp, greedy, …" autocomplete="off" />
+    </label>
+    <span class="toggle" id="tag-mode-wrap">
+      <label class="checkbox"><input type="radio" name="tag-mode" value="any" checked /> ANY</label>
+      <label class="checkbox"><input type="radio" name="tag-mode" value="all" /> ALL</label>
+    </span>
+    <label>Exclude tags <input id="exclude-tags" name="exclude-tags" list="tag-list" placeholder="…, and NOT these" autocomplete="off" /></label>
+    <label>Min medalists <input id="min-medalists" name="min-medalists" type="number" value="1" min="1" step="1" /></label>
+    <button type="submit">Search</button>
+  </form>
+
+  <datalist id="tag-list"></datalist>
+
+  <p id="summary" role="status"></p>
+  <p id="error" role="alert" hidden></p>
+
+  <div class="table-wrap">
+    <table id="results">
+      <thead>
+        <tr>
+          <th>#</th><th>Problem</th><th>Rating</th><th>Tags</th>
+          <th>Medalists</th><th>Global solves</th>
+        </tr>
+      </thead>
+      <tbody id="rows"></tbody>
+    </table>
+  </div>
+
+  <nav id="pagination">
+    <button id="prev" type="button">‹ Prev</button>
+    <span id="page-info"></span>
+    <button id="next" type="button">Next ›</button>
+  </nav>
+
+  <footer id="footer"></footer>
+  <script type="module" src="/src/main.ts"></script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+:root {
+  color-scheme: light dark;
+  --bg: #f6f7f9; --fg: #1a1f27; --card: #fff; --muted: #6b7280;
+  --accent: #2563eb; --border: #d1d5db; --row-alt: #f0f2f5;
+  --link: #2563eb; --err: #b91c1c;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #12161d; --fg: #e5e7eb; --card: #1b212b; --muted: #9ca3af;
+    --accent: #60a5fa; --border: #374151; --row-alt: #171d26;
+    --link: #93c5fd; --err: #f87171;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0 auto; padding: 1rem; max-width: 75rem;
+  font: 15px/1.5 system-ui, sans-serif; background: var(--bg); color: var(--fg);
+}
+header h1 { margin: 0; font-size: 1.4rem; }
+.tagline { margin: .1rem 0 1rem; color: var(--muted); }
+
+#controls {
+  display: flex; flex-wrap: wrap; gap: .6rem 1rem; align-items: end;
+  background: var(--card); border: 1px solid var(--border); border-radius: .5rem;
+  padding: .8rem; margin-bottom: 1rem;
+}
+#controls label { display: flex; flex-direction: column; gap: .2rem; font-size: .85rem; color: var(--muted); }
+#controls .checkbox { flex-direction: row; align-items: center; gap: .35rem; }
+#controls input {
+  background: var(--bg); color: var(--fg); border: 1px solid var(--border);
+  border-radius: .35rem; padding: .35rem .5rem; font: inherit;
+}
+#controls input[type="number"] { width: 6.5rem; }
+#controls input[id$="tags"] { width: 14rem; }
+#controls button {
+  background: var(--accent); color: #fff; border: 0; border-radius: .35rem;
+  padding: .45rem 1.1rem; font: inherit; cursor: pointer;
+}
+.toggle { display: flex; gap: .8rem; }
+
+.table-wrap { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; background: var(--card); }
+th, td { text-align: left; padding: .45rem .6rem; border-bottom: 1px solid var(--border); }
+tbody tr:nth-child(even) { background: var(--row-alt); }
+th { color: var(--muted); font-weight: 600; white-space: nowrap; }
+a { color: var(--link); }
+td.tags { max-width: 22rem; color: var(--muted); font-size: .85rem; }
+td.num { white-space: nowrap; }
+
+#summary { font-weight: 600; }
+#error { color: var(--err); font-weight: 600; }
+#pagination { display: flex; gap: 1rem; align-items: center; justify-content: center; margin: 1rem 0; }
+#pagination button {
+  background: var(--card); color: var(--fg); border: 1px solid var(--border);
+  border-radius: .35rem; padding: .3rem .8rem; cursor: pointer;
+}
+#pagination button:disabled { opacity: .4; cursor: default; }
+footer { color: var(--muted); font-size: .85rem; margin-top: 2rem; }
