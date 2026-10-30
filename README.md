@@ -45,8 +45,23 @@ npm test           # unit tests (query, aggregate, rate limiter)
 npm run refresh    # crawl + aggregate
 ```
 
-The current `data/medalists.input.json` is a 3-handle demo list (tourist, Petr, Benq).
-Replace it with the real export before deploying.
+## Data
+
+`data/medalists.input.json` holds the full 58-handle Iran OI gold medalist
+export (committed). `data/medalists.json` and `data/solved/<handle>.json` are
+the crawler's canonicalized handle list and per-handle 24 h resume cache;
+`public/data/{problems,meta}.json` is the aggregated site data the build copies
+into `dist/`.
+
+## Deployment
+
+Static output in `dist/` — deploy to any static host (e.g. Cloudflare Pages:
+`npx wrangler pages deploy dist`). A weekly refresh re-runs `npm run refresh`
+and redeploys.
+
+## License
+
+MIT — see [LICENSE](LICENSE).
 
 ## CORS spike result (M0.5)
 
